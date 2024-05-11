@@ -5,6 +5,7 @@ import connectDatabase from "../config/ConfigDatabase.js"
 import userRouter from "../routes/UserRouter.js"
 import scenarioRouter from "../routes/ScenarioRouter.js"
 import commentRouter from "../routes/CommentRouter.js"
+import suggestRouter from "../routes/SuggestRouter.js"
 
 class Server{
     constructor(){
@@ -27,6 +28,7 @@ class Server{
         this.app.use("/users", userRouter(this.db))
         this.app.use("/scenarios", scenarioRouter(this.db))
         this.app.use("/comments", commentRouter(this.db))
+        this.app.use("/suggests", suggestRouter(this.db))
     }
     async listen(){
         await this.initiliaze()
