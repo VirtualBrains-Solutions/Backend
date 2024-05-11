@@ -3,6 +3,7 @@ import connectDatabase from "../config/ConfigDatabase.js"
 
 // Routes
 import userRouter from "../routes/UserRouter.js"
+import scenarioRouter from "../routes/ScenarioRouter.js"
 
 class Server{
     constructor(){
@@ -23,6 +24,7 @@ class Server{
     }
     routes(){
         this.app.use("/users", userRouter(this.db))
+        this.app.use("/scenarios", scenarioRouter(this.db))
     }
     async listen(){
         await this.initiliaze()
