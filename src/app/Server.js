@@ -20,6 +20,8 @@ class Server{
         try{
             this.db = await connectDatabase();
 
+            this.app.use(cors());
+
             this.app.use(express.json())
 
             this.routes()
