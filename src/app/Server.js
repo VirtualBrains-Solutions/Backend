@@ -1,4 +1,5 @@
 import express from "express"
+import cors from "cors"
 import connectDatabase from "../config/ConfigDatabase.js"
 
 // Routes
@@ -29,8 +30,6 @@ class Server{
         catch(error){
             console.log("Error in the database connection")
         }
-        
-        
     }
     routes(){
         this.app.use("/users", userRouter(this.db))
