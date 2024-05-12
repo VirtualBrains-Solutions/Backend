@@ -6,6 +6,9 @@ import userRouter from "../routes/UserRouter.js"
 import scenarioRouter from "../routes/ScenarioRouter.js"
 import commentRouter from "../routes/CommentRouter.js"
 import suggestRouter from "../routes/SuggestRouter.js"
+import sessionRouter from "../routes/SessionRouter.js"
+import clinicNoteRouter from "../routes/ClinicNoteRouter.js"
+import planRouter from "../routes/PlansRouter.js"
 
 class Server{
     constructor(){
@@ -29,6 +32,9 @@ class Server{
         this.app.use("/scenarios", scenarioRouter(this.db))
         this.app.use("/comments", commentRouter(this.db))
         this.app.use("/suggests", suggestRouter(this.db))
+        this.app.use("/sessions", sessionRouter(this.db))
+        this.app.use("/clinicnotes", clinicNoteRouter(this.db))
+        this.app.use("/plans", planRouter(this.db))
     }
     async listen(){
         await this.initiliaze()

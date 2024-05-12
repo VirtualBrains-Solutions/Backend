@@ -10,7 +10,7 @@ class UserRepository{
     async createUserRepo(body){
         try{
             await this.pool.request()
-            .input("id", sql.Int, 1)
+            .input("id", sql.Int, 2)
             .input("nombre", sql.VarChar, body.nombre)
             .input("apellido", sql.VarChar, body.apellido)
             .input("fecha_nacimiento", sql.Date, body.fecha_nacimiento)
