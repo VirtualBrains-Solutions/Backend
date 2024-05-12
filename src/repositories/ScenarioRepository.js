@@ -1,15 +1,16 @@
 import sql from "mssql"
 import queries from "../database/Queries.js"
+import generateId from "../helpers/GenerateId.js"
 
 class ScenarioRepository{
     constructor(db){
         this.pool = db
     }
     async createScenarioRepo(body){
-        console.log(body)
         try{
+            const id = generateId()
             await this.pool.request()
-            .input("id", sql.Int,1)
+            .input("id", sql.Int,id)
             .input("nombre_escenario", sql.VarChar, body.nombre_escenario)
             .input("num_likes", sql.Int, body.num_likes)
             .input("num_dislikes", sql.Int, body.num_dislikes)

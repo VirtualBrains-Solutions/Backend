@@ -1,5 +1,6 @@
 import sql from "mssql"
 import queries from "../database/Queries.js"
+import generateId from "../helpers/GenerateId.js"
 
 class SessionRepository{
     constructor(dbo){
@@ -7,8 +8,9 @@ class SessionRepository{
     }
     async createSessionRepo(body){
         try{
+            const id = generateId()
             await this.pool.request()
-            .input("id", sql.Int, 1)
+            .input("id", sql.Int, id)
             .input("fecha_creacion", sql.Date, body.fecha_creacion)
             .input("usuario_id", sql.Int, body.usuario_id)
             .input("nombre_sesion", sql.VarChar, body.nombre_sesion)

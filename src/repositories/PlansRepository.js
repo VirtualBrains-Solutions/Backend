@@ -1,5 +1,6 @@
 import queries from "../database/Queries.js";
 import sql from "mssql"
+import generateId from "../helpers/GenerateId.js"
 
 class PlansRepository{
     constructor(db){
@@ -7,8 +8,9 @@ class PlansRepository{
     }
     async createPlanRepo(body){
         try{
+            const id = generateId()
             await this.pool.request()
-            .input("id", sql.Int, 1)
+            .input("id", sql.Int, id)
             .input("fecha_creacion", sql.Date, body.fecha_creacion)
             .input("especialista_id", sql.Int, body.especialista_id)
             .input("paciente_id", sql.Int, body.paciente_id)

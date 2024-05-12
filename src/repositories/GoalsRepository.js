@@ -1,5 +1,6 @@
 import queries from "../database/Queries.js"
 import sql from "mssql"
+import generateId from "../helpers/GenerateId.js"
 
 class GoalsRepository{
     constructor(db){
@@ -7,8 +8,9 @@ class GoalsRepository{
     }
     async createGoalRepo(body){
         try{
+            const id = generateId()
             await this.pool.request()
-            .input("id", sql.Int, 1)
+            .input("id", sql.Int, id)
             .input("plan_id", sql.Int, body.plan_id)
             .input("descripcion", sql.VarChar, body.descripcion)
             .query(queries.addNewGoal)

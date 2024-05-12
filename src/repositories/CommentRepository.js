@@ -1,5 +1,6 @@
 import queries from "../database/Queries.js";
 import sql from "mssql"
+import generateId from "../helpers/GenerateId.js";
 
 class CommentRepository{
     constructor(db){
@@ -7,8 +8,9 @@ class CommentRepository{
     }
     async createCommentRepo(body){
         try{
+            const id = generateId()
             await this.pool.request()
-            .input("id", sql.Int, 2)
+            .input("id", sql.Int, id)
             .input("texto", sql.VarChar, body.texto)
             .input("escenario_id", sql.Int, body.escenario_id)
             .input("usuario_id", sql.Int, body.usuario_id)

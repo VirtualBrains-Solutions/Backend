@@ -1,5 +1,6 @@
 import sql from "mssql"
 import queries from "../database/Queries.js"
+import generateId from "../helpers/GenerateId.js"
 
 class SuggestRepository{
     constructor(db){
@@ -7,8 +8,9 @@ class SuggestRepository{
     }
     async createSuggestRepo(body){
         try{
+            const id = generateId()
             await this.pool.request()
-            .input("id", sql.Int, 1)
+            .input("id", sql.Int, id)
             .input("tipo_sugerencia", sql.VarChar, body.tipo_sugerencia)
             .input("comentario_sugerencia", sql.VarChar, body.comentario_sugerencia)
             .input("fecha_creacion", sql.Date, body.fecha_creacion)

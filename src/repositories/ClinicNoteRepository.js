@@ -1,5 +1,6 @@
 import queries from "../database/Queries.js"
 import sql from "mssql"
+import generateId from "../helpers/GenerateId.js"
 
 class ClinicNoteRepository{
     constructor(db){
@@ -7,9 +8,9 @@ class ClinicNoteRepository{
     }
     async createClinicNoteRepo(body){
         try{
-            console.log(body)
+            const id = generateId()
             await this.pool.request()
-            .input("id", sql.Int, 1)
+            .input("id", sql.Int, id)
             .input("sesion_id", sql.Int, body.sesion_id)
             .input("descripcion", sql.VarChar, body.descripcion)
             .query(queries.addNewClinicNote)
