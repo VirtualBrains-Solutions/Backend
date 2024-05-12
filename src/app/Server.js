@@ -29,6 +29,7 @@ class Server{
         catch(error){
             console.log("Error in the database connection")
         }
+        
     }
     routes(){
         this.app.use("/users", userRouter(this.db))
