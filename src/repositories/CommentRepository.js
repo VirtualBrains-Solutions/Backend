@@ -24,7 +24,10 @@ class CommentRepository{
     }
     async getCommentByScenarioRepo(id){
         try{
-            const query = `select * from dbo.comentarios where escenario_id = ${id}`
+            const query = `select * from dbo.comentarios CO
+                            inner join dbo.usuarios US on
+                            CO.usuario_id = US.id
+                            where escenario_id = ${id}`
             const result = await this.pool.request().query(query)
             const {recordset} = result
             return recordset

@@ -29,6 +29,23 @@ class ScenarioService{
             throw new Error("There's an error in the service layer - Scenario", error)
         }
     }
+    async changeLikeScenario(id, num){
+        try{
+            return await this.scenarioRepository.changeLikeInScenarioRepo(id, num)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the service layer - Scenario", error)
+        }
+    }
+    async changeDislikeScenario(id, num){
+        try{
+            return await this.scenarioRepository.changeDislikeScenarioRepo(id, num)
+        }
+        catch(error){
+            throw new Error("There's an error in the service layer - Scenario", error)
+        }
+    }
 
     
 }

@@ -25,7 +25,6 @@ const scenarioRouter = (db) => {
     router.get("/", async (req, res) => {
         try{
             const result = await scenarioService.getScenarios()
-            console.log(result)
             res.status(200).json(result)
         }
         catch(error){
@@ -35,6 +34,38 @@ const scenarioRouter = (db) => {
             })
         }
     })
+
+    router.put("/likes/:id", async (req,res) => {
+        try{
+            await scenarioService.changeLikeScenario(req.params.id, req.body.num)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            console.log(error)
+            res.status(500).json({
+                "message": "Ther's an error in the server",
+                error
+            })
+        }
+    })
+
+    router.put("/dislikes/:id", async (req, res) => {
+        try{
+            await scenarioService.changeDislikeScenario(req.params.id, req.body.num)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "Ther's an error in the server",
+                error
+            })
+        }
+    })
+
 
     router.get("/:id", async (req, res) => {
         try{

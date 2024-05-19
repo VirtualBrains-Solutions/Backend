@@ -45,6 +45,25 @@ class ScenarioRepository{
             throw new Error("There's an error in the repository layer - Scenario", error)
         }
     }
+    async changeLikeInScenarioRepo(id, num){
+        try{
+            const query = `update dbo.escenarios set num_likes = ${num} where id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the repository layer - Scenario", error)
+        }
+    }
+    async changeDislikeScenarioRepo(id, num){
+        try{
+            const query = `update dbo.escenarios set num_dislikes = ${num} where id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            throw new Error("There's an error in the repository layer - Scenario", error)
+        }
+    }
 }
 
 export default ScenarioRepository
