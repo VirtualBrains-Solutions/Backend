@@ -46,7 +46,39 @@ class ScenarioService{
             throw new Error("There's an error in the service layer - Scenario", error)
         }
     }
+    async createFavoriteScenario(body){
+        try{
+            await this.scenarioRepository.createFavoriteScenarioRepo(body)
+        }
+        catch(error){
+            throw new Error("There's an error in the service layer - Scenario", error)
 
+        }
+    }
+    async validateFavoriteScenario(body){
+        try{
+            return await this.scenarioRepository.validateFavoriteScenarioRepo(body)
+        }
+        catch(error){
+            throw new Error("There's an error in the service layer - Scenario", error)
+        }
+    }
+    async getFavoritesScenariosByUser(id){
+        try{
+            return await this.scenarioRepository.getFavoritesScenariosByUserRepo(id)
+        }
+        catch(error){
+            throw new Error("There's an error in the service layer - Scenario", error)
+        }
+    }
+    async deleteFavoriteScenario(id){
+        try{
+            await this.scenarioRepository.deleteFavoriteScenarioRepo(id)
+        }
+        catch(error){
+            throw new Error("There's an error in the service layer - Scenario", error)
+        }
+    }
     
 }
 

@@ -41,6 +41,19 @@ const userRouter = (db) => {
         }
     })
 
+    // Get user by id
+    router.get("/:id", async (req, res) => {
+        try{
+            const result =  await userService.getUserById(req.params.id)
+            res.status(200).json(result)
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "There's an error in the server",
+                error
+            })
+        }
+    })
 
     return router
 }

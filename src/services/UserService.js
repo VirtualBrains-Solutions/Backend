@@ -23,6 +23,15 @@ class UserService{
         }
 
     }
+    async getUserById(id){
+        try{
+            return await this.userRepository.getUserByIdRepo(id)
+        }
+        catch(error){
+            console.log("Error in the Service Layer -- User", error)
+            throw new Error("Error in the Servide Layer -- User")
+        }
+    }
 }
 
 export default UserService

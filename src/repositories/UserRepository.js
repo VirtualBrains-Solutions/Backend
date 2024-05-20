@@ -39,6 +39,18 @@ class UserRepository{
             throw new Error("Error in the repository layer - User")
         }
     }
+    async getUserByIdRepo(id){
+        try{
+            const query = `select * from dbo.Usuarios where id = ${id} `
+            const result = await this.pool.request().query(query)
+            const {recordset} = result
+            return recordset
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
 }
 
 export default UserRepository
