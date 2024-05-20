@@ -32,6 +32,24 @@ class UserService{
             throw new Error("Error in the Servide Layer -- User")
         }
     }
+    async deleteUserById(id){
+        try{
+            await this.userRepository.deleteUserByIdRepo(id)
+        }
+        catch(error){
+            console.log("Error in the Service Layer -- User", error)
+            throw new Error("Error in the Servide Layer -- User")
+        }
+    }
+    async changeUserStatus(id){
+        try{
+            await this.userRepository.changeUserStatusRepo(id)
+        }
+        catch(error){
+            console.log("Error in the Service Layer -- User", error)
+            throw new Error("Error in the Servide Layer -- User")
+        }
+    }
 }
 
 export default UserService

@@ -34,7 +34,6 @@ class ClinicNoteRepository{
             throw new Error("There is an error in the repository layer", error)
         }
     }
-
 }
 
 export default ClinicNoteRepository

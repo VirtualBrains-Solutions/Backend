@@ -38,6 +38,26 @@ class CommentRepository{
         }
 
     }
+    async deleteAllCommentsByUserIdRepo(id){
+        try{
+            const query = `delete from dbo.comentarios where usuario_id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("Error in the get comments by scenario id", error)
+            throw new Error("There's an error in the Repository layer -- Comment", error)
+        }
+    }
+    async deleteCommentByIdRepo(id){
+        try{
+            const query = `delete from dbo.comentarios where id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("Error in the get comments by scenario id", error)
+            throw new Error("There's an error in the Repository layer -- Comment", error)
+        }
+    }
 
 }
 

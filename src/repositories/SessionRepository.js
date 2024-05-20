@@ -43,6 +43,15 @@ class SessionRepository{
             throw new Error("There's an error in the Repository layer -- Session")
         }
     }
+    async deleteAllSessionsByPatientIdRepo(id){
+        try{
+            const query = `select * from dbo.sesiones where usuario_id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            throw new Error("There's an error in the Repository layer -- Session")
+        }
+    }
 }
 
 export default SessionRepository

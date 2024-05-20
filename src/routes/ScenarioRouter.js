@@ -35,6 +35,21 @@ const scenarioRouter = (db) => {
         }
     })
 
+    router.delete("/favorite/delete/all/:id", async (req, res) => {
+        try{
+            await scenarioService.deleteAllFavoritesScenariosByUserId(req.params.id)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "Ther's an error in the server",
+                error
+            })
+        }
+    })
+
     router.delete("/favorite/delete/:id", async (req, res) => {
         try{
             await scenarioService.deleteFavoriteScenario(req.params.id)

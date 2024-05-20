@@ -23,6 +23,21 @@ const suggestRouter = (db) => {
 
     })
 
+    router.delete("/delete/all/:id", async (req, res) => {
+        try{
+            await suggestService.deleteAllSuggestByUserId(req.params.id)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "There's an error in the server",
+                error: error
+            })
+        }
+    })
+
     router.get("/", async (req, res) => {
         try{
             const result = await suggestService.getSuggests()

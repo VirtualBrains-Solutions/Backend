@@ -28,6 +28,14 @@ class SessionService{
             throw new Error("There's an error in the service layer -- Session", error)
         }
     }
+    async deleteAllSessionsByPatientId(id){
+        try{
+            await this.sessionRepository.deleteAllSessionsByPatientIdRepo(id)
+        }
+        catch(error){
+            throw new Error("There's an error in the service layer -- Session", error)
+        }
+    }
     
 }
 

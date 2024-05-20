@@ -114,6 +114,16 @@ class ScenarioRepository{
             throw new Error("There's an error in the repository layer - Scenario", error)
         }
     }
+    async deleteAllFavoritesScenariosByUserIdRepo(id){
+        try{
+            const query = `delete from dbo.escenarios_favoritos where usuario_id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the repository layer - Scenario", error)
+        }
+    }
 }
 
 export default ScenarioRepository

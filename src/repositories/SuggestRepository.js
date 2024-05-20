@@ -34,6 +34,16 @@ class SuggestRepository{
             throw new Error("There's an error in the Suggest Repository", error)
         }
     }
+    async deleteAllSuggestionsByUserIdRepo(id){
+        try{
+            const query = `delete from dbo.sugerencias where usuario_id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("There's an error in the Suggest Repository", error)
+            throw new Error("There's an error in the Suggest Repository", error)
+        }
+    }
 
 
 }

@@ -79,6 +79,14 @@ class ScenarioService{
             throw new Error("There's an error in the service layer - Scenario", error)
         }
     }
+    async deleteAllFavoritesScenariosByUserId(id){
+        try{
+            await this.scenarioRepository.deleteAllFavoritesScenariosByUserIdRepo(id)
+        }
+        catch(error){
+            throw new Error("There's an error in the service layer - Scenario", error)
+        }
+    }
     
 }
 

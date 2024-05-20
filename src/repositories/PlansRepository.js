@@ -46,6 +46,16 @@ class PlansRepository{
             throw new Error("There's an error in the plan repository", error)
         }
     }
+    async deleteAllPlansByPatientIdRepo(id){
+        try{
+            const query = `delete from dbo.planes where paciente_id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the plan repository", error)
+        }
+    }
 
 }
 

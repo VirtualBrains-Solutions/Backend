@@ -51,6 +51,26 @@ class UserRepository{
             throw new Error("Error in the repository layer - User")
         }
     }
+    async deleteUserByIdRepo(id){
+        try{
+            const query = `delete from dbo.Usuarios where id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
+    async changeUserStatusRepo(id){
+        try{
+            const query = `update dbo.Usuarios set estado_usuario = 'Eliminado' where id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
 }
 
 export default UserRepository

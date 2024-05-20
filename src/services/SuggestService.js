@@ -22,6 +22,15 @@ class SuggestService{
             throw new Error("There's an error in the suggest service", error)
         }
     }
+    async deleteAllSuggestByUserId(id){
+        try{
+            return await this.suggestRepository.deleteAllSuggestionsByUserIdRepo(id)
+        }
+        catch(error){
+            console.log("There's an error in the suggest service", error)
+            throw new Error("There's an error in the suggest service", error)
+        }
+    }
 
 }
 

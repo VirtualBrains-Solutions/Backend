@@ -20,6 +20,19 @@ const planRouter = (db) => {
         }
     })
 
+    router.delete("/patient/delete/plans/:id", async (req, res) => {
+        try{
+            await planService.deleteAllPlansByPatientId(req.params.id)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the server", error)
+        }
+    })
+
     router.get("/patient/:id", async (req, res) => {
         try{
             const result = await planService.getPlansByPatientId(req.params.id)

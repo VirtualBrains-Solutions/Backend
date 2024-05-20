@@ -22,6 +22,24 @@ class CommentService{
             throw new Error("There's an error in the service layer -- Comment", error)
         }
     }
+    async deleteAllCommentByUserId(id){
+        try{
+            await this.commentRepository.deleteAllCommentsByUserIdRepo(id)
+        }
+        catch(error){
+            console.log("There's an error in the get scenarios by id service", error)
+            throw new Error("There's an error in the service layer -- Comment", error)
+        }
+    }
+    async deleteCommentById(id){
+        try{
+            await this.commentRepository.deleteCommentByIdRepo(id)
+        }
+        catch(error){
+            console.log("There's an error in the get scenarios by id service", error)
+            throw new Error("There's an error in the service layer -- Comment", error)
+        }
+    }
 }
 
 export default CommentService

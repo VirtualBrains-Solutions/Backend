@@ -41,6 +41,38 @@ const userRouter = (db) => {
         }
     })
 
+    // Update user status
+    router.put("/status/:id", async (req, res) => {
+        try{
+            await userService.changeUserStatus(req.params.id)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "There's an error in the server",
+                error
+            })
+        }
+    })
+
+    // Delete user by id
+    router.delete("/delete/:id", async (req, res) => {
+        try{
+            await userService.deleteUserById(req.params.id)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "There's an error in the server",
+                error
+            })
+        }
+    })
+
     // Get user by id
     router.get("/:id", async (req, res) => {
         try{
@@ -54,6 +86,7 @@ const userRouter = (db) => {
             })
         }
     })
+
 
     return router
 }
