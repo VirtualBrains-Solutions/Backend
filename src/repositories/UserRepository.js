@@ -71,6 +71,18 @@ class UserRepository{
             throw new Error("Error in the repository layer - User")
         }
     }
+    async validateUserRepo(body){
+        try{
+            const query = `select * from dbo.Usuarios where email = '${body.email}' and password = '${body.password}'`
+            const result = await this.pool.request().query(query)
+            const {recordset} = result
+            return recordset
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
 }
 
 export default UserRepository

@@ -50,6 +50,15 @@ class UserService{
             throw new Error("Error in the Servide Layer -- User")
         }
     }
+    async validateUser(body){
+        try{
+            return await this.userRepository.validateUserRepo(body)
+        }
+        catch(error){
+            console.log("Error in the Service Layer -- User", error)
+            throw new Error("Error in the Servide Layer -- User")
+        }
+    }
 }
 
 export default UserService
