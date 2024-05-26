@@ -41,6 +41,15 @@ class PlansService{
             throw new Error("There's an error in the plan service", error)
         }
     }
+    async getInfoPlanById(id){
+        try{
+            return await this.planRepository.getInfoPlanByIdRepo(id)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the plan service", error)
+        }
+    }
 }
 
 export default PlansService

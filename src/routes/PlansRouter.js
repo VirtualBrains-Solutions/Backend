@@ -55,6 +55,20 @@ const planRouter = (db) => {
         }
     })
 
+    router.get("/:id", async (req, res) => {
+        try{
+            console.log("called: ", req.params)
+            const result = await planService.getInfoPlanById(req.params.id)
+            res.status(200).json(result)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the server", error)
+        }
+    })
+
+
+
     return router
 }
 

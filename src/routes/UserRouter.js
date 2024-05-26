@@ -41,6 +41,21 @@ const userRouter = (db) => {
         }
     })
 
+    // Search user by email
+    router.post("/search", async (req, res) => {
+        try{
+            const result =  await userService.searchPatient(req.body)
+            res.status(200).json(result)
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "There's an error in the server",
+                error
+            })
+        }
+    })
+    
+
     router.post("/login", async (req, res) => {
         try{
             const result =  await userService.validateUser(req.body)
