@@ -13,6 +13,7 @@ class GoalsRepository{
             .input("id", sql.Int, id)
             .input("plan_id", sql.Int, body.plan_id)
             .input("descripcion", sql.VarChar, body.descripcion)
+            .input("estado_meta", sql.VarChar, body.estado_meta)
             .query(queries.addNewGoal)
         }
         catch(error){

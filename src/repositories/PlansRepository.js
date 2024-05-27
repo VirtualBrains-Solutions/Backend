@@ -70,7 +70,6 @@ class PlansRepository{
             where DP.id = ${id}`
             const result = await this.pool.request().query(query)
             const {recordset} = result
-            console.log("result:", recordset)
             return recordset
         }
         catch(error){
