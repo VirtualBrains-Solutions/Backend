@@ -18,8 +18,9 @@ class UserRepository{
             .input("email", sql.VarChar, body.email)
             .input("password", sql.VarChar, body.password)
             .input("fecha_creacion", sql.Date, body.fecha_creacion)
-            .input("img_url_profile", sql.VarChar, body.img_url_profile)
+            .input("img_url_profile", sql.VarChar, "https://res.cloudinary.com/dkngigwfp/image/upload/v1718170429/pngtree-outline-user-icon-png-image_5045523_zca7x3.jpg")
             .input("tipo_usuario", sql.VarChar, body.tipo_usuario)
+            .input("estado_usuario", sql.VarChar, "Activo")
             .query(queries.addNewUser)
         }
         catch(error){
