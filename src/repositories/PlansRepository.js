@@ -27,7 +27,10 @@ class PlansRepository{
     }
     async getPlansByPatientIdRepo(id){
         try{
-            const query = `select * from dbo.planes where paciente_id = ${id}`
+            const query = `select * from dbo.planes DP
+                inner join dbo.usuarios DU on 
+                DP.especialista_id = DU.id
+                where paciente_id = ${id}`
             const result = await this.pool.request().query(query)
             const {recordset} = result
             return recordset

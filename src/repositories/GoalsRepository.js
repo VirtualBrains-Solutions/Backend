@@ -33,6 +33,17 @@ class GoalsRepository{
             throw new Error("There's an error in the repo layer", error)
         }
     }
+    async changeGoalStatusToCompleteByIdRepo(id){
+        try{
+            const query = `update dbo.metas set estado_meta = 'Completado' where id = ${id}`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the repo layer", error)
+        }
+    }
+
 
 }
 

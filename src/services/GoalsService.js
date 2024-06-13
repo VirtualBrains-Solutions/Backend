@@ -22,6 +22,15 @@ class GoalService{
             throw new Error("There's an error in the service layer goal", error)
         }
     }
+    async changeGoalStatusToCompleteById(id){
+        try{
+            return await this.goalRepository.changeGoalStatusToCompleteByIdRepo(id)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the service layer goal", error)
+        }
+    }
 }
 
 export default GoalService
