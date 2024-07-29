@@ -12,11 +12,11 @@ const userRouter = (db) => {
     // Endpoint to create a user
     router.post("/", async (req, res) => {
         try{
-            await userService.createUser(req.body)
+            const photoURL= await userService.uploadPhotoToCloudinary(req.files.userPhoto)
+            await userService.createUser(req.body, photoURL)
             res.status(200).json({
                 "message": "done"
             })
-
         }
         catch(error){
             res.status(500).json({
@@ -58,8 +58,6 @@ const userRouter = (db) => {
     
 
     router.post("/login", async (req, res) => {
-        console.log("body:", req.body)
-        console.log("db:", db)
         try{
             const result =  await userService.validateUser(req.body)
             res.status(200).json(result)

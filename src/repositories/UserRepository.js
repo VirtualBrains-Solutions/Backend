@@ -7,7 +7,7 @@ class UserRepository{
         this.pool = db
 
     }
-    async createUserRepo(body){
+    async createUserRepo(body, photoURL){
         try{
             const id = generateId()
             await this.pool.request()
@@ -18,7 +18,7 @@ class UserRepository{
             .input("email", sql.VarChar, body.email)
             .input("password", sql.VarChar, body.password)
             .input("fecha_creacion", sql.Date, body.fecha_creacion)
-            .input("img_url_profile", sql.VarChar, "https://res.cloudinary.com/dkngigwfp/image/upload/v1718170429/pngtree-outline-user-icon-png-image_5045523_zca7x3.jpg")
+            .input("img_url_profile", sql.VarChar, photoURL)
             .input("tipo_usuario", sql.VarChar, body.tipo_usuario)
             .input("estado_usuario", sql.VarChar, "Activo")
             .query(queries.addNewUser)

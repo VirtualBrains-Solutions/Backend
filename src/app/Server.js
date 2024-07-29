@@ -1,5 +1,6 @@
 import express from "express"
 import cors from "cors"
+import fileUpload from "express-fileupload";
 import connectDatabase from "../config/ConfigDatabase.js"
 
 // Routes
@@ -24,6 +25,13 @@ class Server{
             this.app.use(cors());
 
             this.app.use(express.json())
+
+            this.app.use(express.urlencoded({extended: true}))
+
+            this.app.use(fileUpload({
+                useTempFiles: true,
+                tempFileDir: "/tmp/"
+            }));
 
             this.routes()
             
