@@ -58,6 +58,8 @@ const userRouter = (db) => {
     
 
     router.post("/login", async (req, res) => {
+        console.log("body:", req.body)
+        console.log("db:", db)
         try{
             const result =  await userService.validateUser(req.body)
             res.status(200).json(result)
