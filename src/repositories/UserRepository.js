@@ -86,10 +86,30 @@ class UserRepository{
     }
     async searchPatientRepo(body){
         try{
-            const query = `select * from dbo.Usuarios where email = '${body.email}'`
+            const query = `select * from dbo.usuarios where email = '${body.email}'`
             const result = await this.pool.request().query(query)
             const {recordset} = result
             return recordset
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
+    async saveToken(token, id){
+        try{
+            const query = `update dbo.usuarios set token = '${token}' where id = '${id}'`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
+    async updatePasswordRepo(body){
+        try{
+            const query = `update dbo.usuarios set password = '${body.newPassword}'where token = '${body.token}'`
+            await this.pool.request().query(query)
         }
         catch(error){
             console.log("Error in the repository layer - User", error)

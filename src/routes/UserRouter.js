@@ -42,6 +42,19 @@ const userRouter = (db) => {
         }
     })
 
+    // Endpoint to recover the user's password
+    router.post("/recover-password", async (req, res) => {
+        try{
+            await userService.sendEmailToRecoverPassword(req.body)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+
+        }
+    })
+
     // Search user by email
     router.post("/search", async (req, res) => {
         try{
@@ -56,7 +69,6 @@ const userRouter = (db) => {
         }
     })
     
-
     router.post("/login", async (req, res) => {
         try{
             const result =  await userService.validateUser(req.body)
@@ -69,6 +81,22 @@ const userRouter = (db) => {
             })
         }
     } )
+
+    // Change password
+    router.put("/update-password", async (req, res) => {
+        try{
+            await userService.updatePassword(req.body)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "There's an error in the server",
+                error
+            })
+        }
+    })
 
     // Update user status
     router.put("/status/:id", async (req, res) => {
@@ -115,6 +143,7 @@ const userRouter = (db) => {
             })
         }
     })
+    
 
 
     return router

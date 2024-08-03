@@ -1,5 +1,7 @@
 import UserRepository from "../repositories/UserRepository.js"
 import {v2 as cloudinary} from "cloudinary"
+import sendEmail from "../helpers/SendEmail.js"
+import generateId from "../helpers/GenerateId.js"
 
 class UserService{
     constructor(db){
@@ -8,6 +10,33 @@ class UserService{
     async createUser(body, photoURL){
         try{
             await this.userRepository.createUserRepo(body, photoURL)
+        }
+        catch(error){
+            console.log("Error in the Service Layer -- User", error)
+            throw new Error("Error in the Servide Layer -- User")
+        }
+    }
+    async sendEmailToRecoverPassword(body){
+        try{
+            // Get the user Info
+            const userInfo = await this.userRepository.searchPatientRepo(body)
+            
+            // Generate Token 
+            let token = generateId()
+
+            // Save the token 
+            await this.userRepository.saveToken(token, userInfo[0].id)
+
+            // Send the email
+            await sendEmail(userInfo[0], token)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+    async updatePassword(body){
+        try{
+            await this.userRepository.updatePasswordRepo(body)
         }
         catch(error){
             console.log("Error in the Service Layer -- User", error)
