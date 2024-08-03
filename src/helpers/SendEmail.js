@@ -17,7 +17,7 @@ const sendEmail = (user, token) => {
         html: `
             <h1>Hola, ¡${user.nombre} ${user.apellido}!</h1>
             <p>Para cambiar tu contraseña ingresa al siguiente enlace:</p>
-            <a href = "http://localhost:5173/change-password/${token}">Cambiar contraseña</a>
+            <a href = "https://virtualbrainsolutions.netlify.app/change-password/${token}">Cambiar contraseña</a>
             <br>
             <p>Atentamente,</p>
             <p>Virtual Brain Solutions</p>
