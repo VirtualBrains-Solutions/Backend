@@ -22,6 +22,24 @@ class CommentRepository{
             throw new Error("There's an error in the Repository layer -- Comment", error)
         }
     }
+    async createCommentChildRepo(body){
+        try{
+            console.log(body)
+            const id = generateId()
+            await this.pool.request()
+            .input("id", sql.Int, id)
+            .input("texto", sql.VarChar, body.texto)
+            .input("escenario_id", sql.Int, body.escenario_id)
+            .input("usuario_id", sql.Int, body.usuario_id)
+            .input("fecha_creacion", sql.Date, body.fecha_creacion)
+            .input("comentario_padre_id", sql.Int, body.comentario_padre_id)
+            .query(queries.addNewCommentChild)
+        }
+        catch(error){
+            console.log("Error in the create comment repository", error)
+            throw new Error("There's an error in the Repository layer -- Comment", error)
+        }
+    }
     async getCommentByScenarioRepo(id){
         try{
             const query = `select * from dbo.comentarios CO

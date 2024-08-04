@@ -98,6 +98,22 @@ const userRouter = (db) => {
         }
     })
 
+    // Update user's password by the user's id
+    router.put("/change-password", async (req, res) => {
+        try{
+            await userService.updatePasswordByUserId(req.body)
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "There's an error in the server",
+                error
+            })
+        }
+    })
+
     // Update user info
     router.put("/change-info", async (req, res) => {
         try{

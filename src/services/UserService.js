@@ -43,6 +43,15 @@ class UserService{
             throw new Error("Error in the Servide Layer -- User")
         }
     }
+    async updatePasswordByUserId(body){
+        try{
+            await this.userRepository.updatePasswordByUserIdRepo(body)
+        }
+        catch(error){
+            console.log("Error in the Service Layer -- User", error)
+            throw new Error("Error in the Servide Layer -- User")
+        }
+    }
     async updateUserInfo(body){
         try{
             await this.userRepository.updateUserInfoRepo(body)

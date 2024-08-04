@@ -136,6 +136,16 @@ class UserRepository{
             throw new Error("Error in the repository layer - User")
         }
     }
+    async updatePasswordByUserIdRepo(body){
+        try{
+            const query = `update dbo.usuarios set password = '${body.new_password}'where id = '${body.id}'`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
 }
 
 export default UserRepository

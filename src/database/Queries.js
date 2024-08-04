@@ -7,7 +7,8 @@ const queries = {
     addNewClinicNote: "insert into dbo.notas_clinicas(id, sesion_id, descripcion) values(@id, @sesion_id, @descripcion)",
     addNewPlan: "insert into dbo.planes(id, fecha_creacion, especialista_id, paciente_id, descripcion_plan, nombre_plan) values(@id, @fecha_creacion, @especialista_id, @paciente_id, @descripcion_plan, @nombre_plan)",
     addNewGoal: "insert into dbo.metas (id, plan_id, descripcion, estado_meta) values (@id, @plan_id, @descripcion, @estado_meta)",
-    addNewFavoriteScenario: "insert into dbo.escenarios_favoritos(id, usuario_id, escenario_id) values (@id, @usuario_id, @escenario_id)"
+    addNewFavoriteScenario: "insert into dbo.escenarios_favoritos(id, usuario_id, escenario_id) values (@id, @usuario_id, @escenario_id)",
+    addNewCommentChild: "insert into dbo.comentarios(id, texto, escenario_id, usuario_id, fecha_creacion, comentario_padre_id) values (@id, @texto, @escenario_id, @usuario_id, @fecha_creacion, @comentario_padre_id)"
 }
 
 export default queries

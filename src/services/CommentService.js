@@ -13,6 +13,15 @@ class CommentService{
             throw new Error("There's an error in the service layer -- Comment", error)
         }
     }
+    async createCommentChild(body){
+        try{
+            await this.commentRepository.createCommentChildRepo(body)
+        }
+        catch(error){
+            console.log("There's an error in the create comment service", error)
+            throw new Error("There's an error in the service layer -- Comment", error)
+        }
+    }
     async getCommentByScenarioId(id){
         try{
             return await this.commentRepository.getCommentByScenarioRepo(id)
