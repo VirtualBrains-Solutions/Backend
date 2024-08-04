@@ -98,6 +98,26 @@ const userRouter = (db) => {
         }
     })
 
+    // Update user info
+    router.put("/change-info", async (req, res) => {
+        try{
+            await userService.updateUserInfo(req.body)
+            if(req.files.userUpdatePhoto){
+                const photoURL= await userService.uploadPhotoToCloudinary(req.files.userUpdatePhoto)
+                await userService.updateUserPhoto(photoURL, req.body.id)
+            }
+            res.status(200).json({
+                "message": "done"
+            })
+        }
+        catch(error){
+            res.status(500).json({
+                "message": "There's an error in the server",
+                error
+            })
+        }
+    })
+
     // Update user status
     router.put("/status/:id", async (req, res) => {
         try{

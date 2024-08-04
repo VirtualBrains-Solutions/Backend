@@ -116,6 +116,26 @@ class UserRepository{
             throw new Error("Error in the repository layer - User")
         }
     }
+    async updateUserInfoRepo(body){
+        try{
+            const query = `update dbo.usuarios set nombre = '${body.nombre}', apellido = '${body.apellido}' where id = '${body.id}'`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
+    async updatePhotoUserRepo(url, id){
+        try{
+            const query = `update dbo.usuarios set img_url_profile = '${url}' where id = '${id}'`
+            await this.pool.request().query(query)
+        }
+        catch(error){
+            console.log("Error in the repository layer - User", error)
+            throw new Error("Error in the repository layer - User")
+        }
+    }
 }
 
 export default UserRepository

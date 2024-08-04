@@ -43,6 +43,24 @@ class UserService{
             throw new Error("Error in the Servide Layer -- User")
         }
     }
+    async updateUserInfo(body){
+        try{
+            await this.userRepository.updateUserInfoRepo(body)
+        }
+        catch(error){
+            console.log("Error in the Service Layer -- User", error)
+            throw new Error("Error in the Servide Layer -- User")
+        }
+    }
+    async updateUserPhoto(url, id){
+        try{
+            await this.userRepository.updatePhotoUserRepo(url, id)
+        }
+        catch(error){
+            console.log("Error in the Service Layer -- User", error)
+            throw new Error("Error in the Servide Layer -- User")
+        }
+    }
     async uploadPhotoToCloudinary(file){
         try{
             cloudinary.config({
