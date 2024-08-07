@@ -8,7 +8,8 @@ const queries = {
     addNewPlan: "insert into dbo.planes(id, fecha_creacion, especialista_id, paciente_id, descripcion_plan, nombre_plan) values(@id, @fecha_creacion, @especialista_id, @paciente_id, @descripcion_plan, @nombre_plan)",
     addNewGoal: "insert into dbo.metas (id, plan_id, descripcion, estado_meta) values (@id, @plan_id, @descripcion, @estado_meta)",
     addNewFavoriteScenario: "insert into dbo.escenarios_favoritos(id, usuario_id, escenario_id) values (@id, @usuario_id, @escenario_id)",
-    addNewCommentChild: "insert into dbo.comentarios(id, texto, escenario_id, usuario_id, fecha_creacion, comentario_padre_id) values (@id, @texto, @escenario_id, @usuario_id, @fecha_creacion, @comentario_padre_id)"
+    addNewCommentChild: "insert into dbo.comentarios(id, texto, escenario_id, usuario_id, fecha_creacion, comentario_padre_id) values (@id, @texto, @escenario_id, @usuario_id, @fecha_creacion, @comentario_padre_id)",
+    addNewFeedback: "insert into dbo.feedbacks (id, usuario_id, feedback_descripcion, velocidad_de_habla, contacto_visual, palabras_de_filtro, facilidad_de_escucha, score) values (@id, @usuario_id, @feedback_descripcion, @velocidad_de_habla, @contacto_visual, @palabras_de_filtro, @facilidad_de_escucha, @score)"
 }
 
 export default queries

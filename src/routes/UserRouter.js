@@ -58,6 +58,7 @@ const userRouter = (db) => {
     // Search user by email
     router.post("/search", async (req, res) => {
         try{
+            console.log(req.body)
             const result =  await userService.searchPatient(req.body)
             res.status(200).json(result)
         }
