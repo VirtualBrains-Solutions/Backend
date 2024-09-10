@@ -38,6 +38,19 @@ class FeedbackRepository{
             throw new Error("There's an error in the repo layer", error)
         }
     }
+
+    async getFeedbacksByUserId(id){
+        try{
+            const query = `select * from dbo.feedbacks where usuario_id = ${id}`
+            const result = await this.pool.request().query(query)
+            const {recordset} = result
+            return recordset
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the repo layer", error)
+        }
+    }
 }
 
 export default FeedbackRepository

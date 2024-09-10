@@ -147,6 +147,39 @@ class QuestionnaireRepository{
             throw new Error("There's an error in the repo layer", error)
         }
     }
+    async getQuestionnarieGeneralAnswersByUserIdRepo(id){
+        const query = `select * from cuestionario_general where usuario_id = ${id}`
+        const result = await this.pool.request().query(query)
+        const {recordset} = result
+        return recordset
+    }
+    async getQuestionnariePreSocialAnswersByUserIdRepo(id){
+        const query = `select * from dbo.cuestionario_presocial where usuario_id = ${id}`
+        const result = await this.pool.request().query(query)
+        const {recordset} = result
+        return recordset
+    }
+    async getQuestionnariePreInterviewAnswersByUserIdRepo(id){
+        const query = `select * from dbo.cuestionario_preentrevista where usuario_id = ${id}`
+        const result = await this.pool.request().query(query)
+        const {recordset} = result
+        return recordset
+    } 
+    async getQuestionnariePostSocialAnswersByUserIdRepo(id){
+        const query = `select * from dbo.cuestionario_postsocial where usuario_id = ${id}`
+        const result = await this.pool.request().query(query)
+        const {recordset} = result
+        return recordset
+    }
+    async getQuestionnariePostInterviewAnswersByUserIdRepo(id){
+        const query = `select * from dbo.cuestionario_postentrevista where usuario_id = ${id}`
+        const result = await this.pool.request().query(query)
+        const {recordset} = result
+        return recordset
+    }
+         
+
+
 
 
 

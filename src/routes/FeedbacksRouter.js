@@ -13,7 +13,6 @@ const feedbackRouter = (db) => {
             res.status(200).json(result)
         }
         catch(error){
-            console.log(error)
             res.status(500).json({
                 "message": "There's an error in the server",
                 error
@@ -29,7 +28,6 @@ const feedbackRouter = (db) => {
             })
         }
         catch(error){
-            console.log(error)
             res.status(500).json({
                 "message": "There's an error in the server",
                 error
