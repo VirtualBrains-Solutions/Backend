@@ -43,8 +43,6 @@ class GoalsRepository{
             throw new Error("There's an error in the repo layer", error)
         }
     }
-
-
 }
 
 export default GoalsRepository
