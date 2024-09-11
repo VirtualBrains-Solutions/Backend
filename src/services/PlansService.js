@@ -50,6 +50,15 @@ class PlansService{
             throw new Error("There's an error in the plan service", error)
         }
     }
+    async getPatientIDsByMedicalId(id){
+        try{
+            return await this.planRepository.getPatientIDsByMedicalIdRepo(id)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the plan service", error)
+        }
+    }
 }
 
 export default PlansService

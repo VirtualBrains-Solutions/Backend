@@ -33,6 +33,17 @@ const planRouter = (db) => {
         }
     })
 
+    router.get("/patients/medic/:id", async (req, res) => {
+        try{
+            const data = await planService.getPatientIDsByMedicalId(req.params.id)
+            res.status(200).json(data)
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the server", error)
+        }
+    })
+
     router.get("/patient/:id", async (req, res) => {
         try{
             const result = await planService.getPlansByPatientId(req.params.id)

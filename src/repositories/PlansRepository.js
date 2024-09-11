@@ -80,6 +80,19 @@ class PlansRepository{
             throw new Error("There's an error in the plan repository", error)
         }
     }
+    async getPatientIDsByMedicalIdRepo(id){
+        try{
+            const query = `select distinct paciente_id from dbo.planes
+                            where especialista_id = ${id}`
+            const result = await this.pool.request().query(query)
+            const {recordset} = result
+            return recordset
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("There's an error in the plan repository", error)
+        }
+    }
 
 }
 
