@@ -7,8 +7,9 @@ const emailRouter = (db) => {
     const emailService = new EmailService(db)
 
     router.post("/send/:id", async (req, res) => {
+        console.log(req.body, req.params.id)
         try{
-            await emailService.sendEmail(req.params.id)
+            await emailService.sendEmail(req.params.id, req.body)
             res.status(200).json({
                 "message": "done"
             })
